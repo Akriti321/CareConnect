@@ -9,36 +9,28 @@ const PendingDoctors = () => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
 
     const fetchPendingDoctors = async () => {
-        try {
+    try {
 
-            const aToken = localStorage.getItem('aToken')
+        const aToken = localStorage.getItem('aToken')
 
-            const { data } = await axios.get(
-                `${backendUrl}/api/admin/pending-doctors`,
-                {
-                    headers: { aToken }
-                }
-            )
-
-            if (data.success) {
-                setDoctors(data.doctors)
-            } else {
-                toast.error(data.message)
-            }
-
-        } catch (error) {
-            console.log(error)
-            toast.error(error.message)
-        }
         const { data } = await axios.get(
-    backendUrl + '/api/admin/pending-doctors',
-    {
-        headers: { aToken }
-    }
-)
+            `${backendUrl}/api/admin/pending-doctors`,
+            {
+                headers: { aToken }
+            }
+        )
 
-console.log(data)
+        if (data.success) {
+            setDoctors(data.doctors)
+        } else {
+            toast.error(data.message)
+        }
+
+    } catch (error) {
+        console.log(error)
+        toast.error(error.message)
     }
+}
 
     const approveDoctor = async (doctorId) => {
         try {
@@ -105,39 +97,104 @@ console.log(data)
             ) : (
                 doctors.map((doctor) => (
                     <div
-                        key={doctor._id}
-                        className='border rounded-lg p-4 mb-4 bg-white shadow-sm flex justify-between items-center'
-                    >
-                        <div>
-                            <p className='font-semibold text-lg'>
-                                {doctor.name}
-                            </p>
+    key={doctor._id}
+    className="bg-white border rounded-lg p-5 mb-5 shadow"
+  >
+    <div className="flex gap-5">
 
-                            <p>{doctor.email}</p>
-                            <p>{doctor.degree}</p>
-                            <p>{doctor.speciality}</p>
+      {/* Doctor Photo */}
+      <img
+        src={doctor.image}
+        alt=""
+        className="w-32 h-32 rounded object-cover border"
+      />
 
-                            <p className='text-sm text-gray-500'>
-                                Status: {doctor.verificationStatus}
-                            </p>
-                        </div>
+      <div className="flex-1">
 
-                        <div className='flex gap-3'>
-                            <button
-                                onClick={() => approveDoctor(doctor._id)}
-                                className='bg-green-500 text-white px-4 py-2 rounded'
-                            >
-                                Approve
-                            </button>
+        <h2 className="text-xl font-bold">
+          {doctor.name}
+        </h2>
 
-                            <button
-                                onClick={() => rejectDoctor(doctor._id)}
-                                className='bg-red-500 text-white px-4 py-2 rounded'
-                            >
-                                Reject
-                            </button>
-                        </div>
-                    </div>
+        <p><b>Email:</b> {doctor.email}</p>
+
+        <p><b>Speciality:</b> {doctor.speciality}</p>
+
+        <p><b>Degree:</b> {doctor.degree}</p>
+
+        <p><b>Experience:</b> {doctor.experience}</p>
+
+        <p><b>Fees:</b> ₹{doctor.fees}</p>
+
+        <p>
+          <b>Medical License:</b>
+          {doctor.medicalLicenseNumber}
+        </p>
+
+        <p>
+          <b>Address:</b>
+          {doctor.address?.line1}
+          {" "}
+          {doctor.address?.line2}
+        </p>
+
+        <p className="mt-2">
+          <b>About:</b>
+          {doctor.about}
+        </p>
+
+      </div>
+    </div>
+
+    {/* Documents */}
+    <div className="mt-5">
+
+      <h3 className="font-semibold text-lg mb-3">
+        Uploaded Documents
+      </h3>
+
+      <div className="flex gap-4">
+
+        <a
+          href={doctor.governmentIdUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          View Government ID
+        </a>
+
+        <a
+          href={doctor.medicalCertificateUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="bg-purple-500 text-white px-4 py-2 rounded"
+        >
+          View Certificate
+        </a>
+
+      </div>
+    </div>
+
+    {/* Approve Reject */}
+    <div className="flex gap-3 mt-5">
+
+      <button
+        onClick={() => approveDoctor(doctor._id)}
+        className="bg-green-500 text-white px-5 py-2 rounded"
+      >
+        Approve
+      </button>
+
+      <button
+        onClick={() => rejectDoctor(doctor._id)}
+        className="bg-red-500 text-white px-5 py-2 rounded"
+      >
+        Reject
+      </button>
+
+    </div>
+
+  </div>
                 ))
             )}
 
