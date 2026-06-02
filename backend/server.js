@@ -6,6 +6,8 @@ import connectCloudinary from "./config/cloudinary.js"
 import userRouter from "./routes/userRoute.js"
 import doctorRouter from "./routes/doctorRoute.js"
 import adminRouter from "./routes/adminRoute.js"
+import prescriptionRouter from "./routes/prescriptionRoute.js";
+
 
 import chatbotRouter from "./routes/chatbotroute.js"
 
@@ -24,6 +26,7 @@ app.use("/api/user", userRouter)
 app.use("/api/admin", adminRouter)
 app.use("/api/doctor", doctorRouter)
 app.use("/api/chatbot", chatbotRouter)
+app.use("/api/prescription",prescriptionRouter);
 
 app.get("/", (req, res) => {
   res.send("API Working")

@@ -143,15 +143,21 @@ const RegisterDoctor = () => {
                 required
             />
 
-            <input
-                type="text"
-                name="speciality"
-                value={formData.speciality}
-                placeholder="Speciality"
-                onChange={handleChange}
-                className='border p-2 w-full mb-3 rounded'
-                required
-            />
+            <select
+    name="speciality"
+    value={formData.speciality}
+    onChange={handleChange}
+    className="border p-2 w-full mb-3 rounded"
+    required
+>
+    <option value="">Select Speciality</option>
+    <option value="General physician">General physician</option>
+    <option value="Gynecologist">Gynecologist</option>
+    <option value="Dermatologist">Dermatologist</option>
+    <option value="Pediatricians">Pediatricians</option>
+    <option value="Neurologist">Neurologist</option>
+    <option value="Gastroenterologist">Gastroenterologist</option>
+</select>
 
             <input
                 type="text"
