@@ -1,7 +1,11 @@
 import React from 'react'
 import { assets } from '../assets/assets'
+import { useNavigate } from 'react-router-dom'
 
 const Contact = () => {
+
+
+  const navigate = useNavigate()
   return (
     <div>
 
@@ -18,7 +22,12 @@ const Contact = () => {
             Lucknow, Uttar Pardesh 462011<br/>
             India</p>
           <p className=' text-gray-500'>Contact :+91-9131369842 <br /> Email: CareConnect@gmail.com</p>
-          
+          <button
+  onClick={() => navigate('/register-doctor')}
+ className='bg-primary text-white px-7 py-3 rounded-lg text-lg font-medium mt-2 hover:scale-105 transition-all'
+>
+  Apply As Doctor
+</button>
           
         </div>
       </div>
