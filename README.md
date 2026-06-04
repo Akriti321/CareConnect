@@ -69,38 +69,23 @@ Powered by Gemini API
 
 ---
 
-# Technology Stack
+## Tech Stack
 
-### Frontend
+Frontend: React.js, Tailwind CSS, Axios
 
-* React.js
-* Tailwind CSS
+Backend: Node.js, Express.js
 
-### Backend
+Database: MongoDB, Mongoose
 
-* Node.js
-* Express.js
+Authentication: JWT, bcrypt.js
 
-### Database
+Real-Time Communication: Socket.IO
 
-* MongoDB
+Payments: Razorpay
 
-### Authentication
+Cloud Storage: Cloudinary, Multer
 
-* JWT
-* bcrypt.js
-
-### Real-Time Communication
-
-* Socket.IO
-
-### Payments
-
-* Razorpay
-
-### AI
-
-* Gemini API
+AI Integration: Google Gemini API
 
 ---
 
@@ -148,6 +133,9 @@ git clone <repository-url>
 cd frontend
 npm install
 
+cd admin
+npm run dev
+
 cd backend
 npm install
 
@@ -158,6 +146,12 @@ JWT_SECRET=
 RAZORPAY_KEY_ID=
 RAZORPAY_SECRET=
 GEMINI_API_KEY=
+ADMIN_EMAIL=
+ADMIN_PASSWORD=
+CLOUDINARY_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_SECRET_KEY=
+
 
 npm run server
 npm run dev
