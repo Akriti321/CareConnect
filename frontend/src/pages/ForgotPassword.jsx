@@ -10,28 +10,39 @@ const ForgotPassword = () => {
   const navigate = useNavigate()
 
   const [email, setEmail] = useState('')
+  const [otpSent, setOtpSent] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+  e.preventDefault()
 
-    try {
-      const { data } = await axios.post(
-        backendUrl + '/api/user/forgot-password',
-        { email }
-      )
+  if (otpSent) return
 
-      if (data.success) {
-        toast.success('OTP sent successfully')
+  try {
+    setLoading(true)
 
+    const { data } = await axios.post(
+      backendUrl + '/api/user/forgot-password',
+      { email }
+    )
+
+    if (data.success) {
+      toast.success('OTP sent successfully')
+      setOtpSent(true)
+
+      setTimeout(() => {
         navigate('/reset-password')
-      } else {
-        toast.error(data.message)
-      }
-
-    } catch (error) {
-      toast.error(error.message)
+      }, 1500)
+    } else {
+      toast.error(data.message)
     }
+
+  } catch (error) {
+    toast.error(error.message)
+  } finally {
+    setLoading(false)
   }
+}
 
   return (
   <div className="min-h-[80vh] flex items-center">
@@ -59,11 +70,12 @@ const ForgotPassword = () => {
         />
       </div>
 
-      <button
-        type="submit"
-        className="bg-primary text-white py-2 rounded-md text-base"
-      >
-        Send OTP
+      <button type="submit" disabled={loading || otpSent}  className={`text-white py-2 rounded-md text-base transition-all ${  otpSent
+      ? 'bg-green-500 cursor-not-allowed'
+      : loading
+      ? 'bg-gray-400 cursor-not-allowed'
+      : 'bg-primary hover:opacity-90'}`}>
+      {loading  ? 'Sending...'  : otpSent  ? 'OTP Sent ✓'  : 'Send OTP'}
       </button>
     </form>
   </div>
