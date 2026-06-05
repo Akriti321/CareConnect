@@ -16,6 +16,8 @@ import DoctorDashboard from './pages/Doctor/DoctorDashboard';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
 import RegisterDoctor from './pages/Doctor/RegisterDoctor'
 import PendingDoctors from "./pages/Admin/PendingDoctors";
+import DoctorForgotPassword from './pages/Doctor/DoctorForgotPassword'
+import DoctorResetPassword from './pages/Doctor/DoctorResetPassword'
 
 const App = () => {
 
@@ -47,6 +49,8 @@ const App = () => {
       <ToastContainer />
       <Routes>
       <Route path="/" element={<Login />} />
+      <Route path="/doctor-forgot-password" element={<DoctorForgotPassword />} />
+      <Route path="/doctor-reset-password" element={<DoctorResetPassword />} />
       <Route path="/doctor-register" element={<RegisterDoctor />} />
     </Routes>
 

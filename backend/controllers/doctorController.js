@@ -4,6 +4,7 @@ import validator from "validator";
 import { v2 as cloudinary } from "cloudinary";
 import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js";
+import nodemailer from 'nodemailer'
 
 // API for doctor Login 
 const loginDoctor = async (req, res) => {
@@ -463,6 +464,92 @@ console.log("Updated image:", doctor.image);
         });
     }
 };
+
+//API to forgor password
+const forgotPasswordDoctor = async (req, res) => {
+  try {
+    const { email } = req.body
+
+    const doctor = await doctorModel.findOne({ email })
+
+    if (!doctor) {
+      return res.json({
+        success: false,
+        message: 'Doctor not found'
+      })
+    }
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString()
+
+    doctor.resetOtp = otp
+    doctor.resetOtpExpireAt = Date.now() + 10 * 60 * 1000
+
+    await doctor.save()
+
+    // Send email here
+
+    res.json({
+      success: true,
+      message: 'OTP sent successfully'
+    })
+
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message
+    })
+  }
+}
+
+//API to reset password
+const resetPasswordDoctor = async (req, res) => {
+  try {
+
+    const { email, otp, newPassword } = req.body
+
+    const doctor = await doctorModel.findOne({ email })
+
+    if (!doctor) {
+      return res.json({
+        success: false,
+        message: 'Doctor not found'
+      })
+    }
+
+    if (doctor.resetOtp !== otp) {
+      return res.json({
+        success: false,
+        message: 'Invalid OTP'
+      })
+    }
+
+    if (doctor.resetOtpExpireAt < Date.now()) {
+      return res.json({
+        success: false,
+        message: 'OTP Expired'
+      })
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10)
+
+    doctor.password = hashedPassword
+    doctor.resetOtp = ''
+    doctor.resetOtpExpireAt = 0
+
+    await doctor.save()
+
+    res.json({
+      success: true,
+      message: 'Password reset successful'
+    })
+
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message
+    })
+  }
+}
 export {
     registerDoctor,
     loginDoctor,
@@ -476,5 +563,7 @@ export {
     updateDoctorProfile,
     addPrescription,
     getPrescription,
-    updateProfileImage
+    updateProfileImage,
+    forgotPasswordDoctor,
+    resetPasswordDoctor
 }

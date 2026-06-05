@@ -26,41 +26,23 @@ const doctorSchema = new mongoose.Schema({
     // Verification Fields
     // ----------------------------
 
-    medicalLicenseNumber: {
-        type: String,
-        default: ""
-    },
+    medicalLicenseNumber: { type: String, default: "" },
 
-    governmentIdUrl: {
-        type: String,
-        default: ""
-    },
+    governmentIdUrl: { type: String, default: ""},
 
-    medicalCertificateUrl: {
-        type: String,
-        default: ""
-    },
+    medicalCertificateUrl: { type: String, default: ""},
 
-    verificationStatus: {
-        type: String,
-        enum: ["pending", "approved", "rejected"],
-        default: "pending"
-    },
+    verificationStatus: { type: String, enum: ["pending", "approved", "rejected"], default: "pending"},
 
-    rejectionReason: {
-        type: String,
-        default: ""
-    },
+    rejectionReason: { type: String, default: ""},
 
-    approvedBy: {
-        type: String,
-        default: ""
-    },
+    approvedBy: { type: String, default: ""},
 
-    approvedAt: {
-        type: Number,
-        default: null
-    }
+    approvedAt: { type: Number, default: null},
+    
+    resetOtp: { type: String, default: ''},
+
+    resetOtpExpireAt: {type: Number, default: 0}
 
 }, { minimize: false });
 
