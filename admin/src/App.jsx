@@ -16,6 +16,8 @@ import DoctorDashboard from './pages/Doctor/DoctorDashboard';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
 import RegisterDoctor from './pages/Doctor/RegisterDoctor'
 import PendingDoctors from "./pages/Admin/PendingDoctors";
+import DoctorForgotPassword from "./pages/Doctor/DoctorForgotPassword";
+import DoctorResetPassword from "./pages/Doctor/DoctorResetPassword";
 // import { Navigate } from "react-router-dom";
 import { Route, Routes, Navigate } from 'react-router-dom'
 
@@ -58,6 +60,8 @@ const App = () => {
       <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/doctor-register" element={<RegisterDoctor />} />
+      <Route path="/doctor-forgot-password" element={<DoctorForgotPassword />} />
+      <Route path="/doctor-reset-password" element={<DoctorResetPassword />} />
     </Routes>
 
     </>
