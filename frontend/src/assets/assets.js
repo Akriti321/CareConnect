@@ -37,14 +37,14 @@ import doc15 from './doc15.png'
 // import General_physician from './General_physician.svg'
 
 // import Neurologist from './Neurologist.svg'
-// import Pediatricians from './Pediatricians.svg'
+
 
 import Dermatologist from './derma.png'
 import Gastroenterologist from './gastro.png'
 import General_physician from './gp.png'
 import Gynaecologist from './gynaco.png'
 import Neurologist from './neuro.png'
-import Pediatricians from './pedi.png'
+import Pediatrician from './pedi.png'
 import Orthopaedist from './ortho.png'
 import Cardiologist from './heart.png'
     
@@ -87,7 +87,7 @@ export const specialityData = [
     },
     {
         speciality: 'Pediatrician',
-        image: Pediatricians
+        image: Pediatrician
     },
     {
         speciality: 'Neurologist',
