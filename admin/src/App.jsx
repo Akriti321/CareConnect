@@ -14,7 +14,6 @@ import Login from './pages/Login';
 import DoctorAppointments from './pages/Doctor/DoctorAppointments';
 import DoctorDashboard from './pages/Doctor/DoctorDashboard';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
-import RegisterDoctor from './pages/Doctor/RegisterDoctor'
 import PendingDoctors from "./pages/Admin/PendingDoctors";
 import DoctorForgotPassword from "./pages/Doctor/DoctorForgotPassword";
 import DoctorResetPassword from "./pages/Doctor/DoctorResetPassword";
@@ -49,7 +48,6 @@ const App = () => {
           <Route path='/doctor-dashboard' element={<DoctorDashboard />} />
           <Route path='/doctor-appointments' element={<DoctorAppointments />} />
           <Route path='/doctor-profile' element={<DoctorProfile />} />
-          <Route path="/doctor-register" element={<RegisterDoctor />}/>
           <Route path="/pending-doctors" element={<PendingDoctors />} />
         </Routes>
       </div>
@@ -59,7 +57,6 @@ const App = () => {
       <ToastContainer />
       <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="/doctor-register" element={<RegisterDoctor />} />
       <Route path="/doctor-forgot-password" element={<DoctorForgotPassword />} />
       <Route path="/doctor-reset-password" element={<DoctorResetPassword />} />
     </Routes>

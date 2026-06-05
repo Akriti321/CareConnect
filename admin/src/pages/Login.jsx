@@ -77,19 +77,6 @@ const Login = () => {
   Login
 </button>
 
-{
-  state === 'Doctor' && (
-    <p className='text-sm'>
-      New Doctor?{" "}
-      <Link
-        to="/doctor-register"
-        className='text-primary underline'
-      >
-        Register Here
-      </Link>
-    </p>
-  )
-}
         {
           state === 'Admin'
             ? <p>Doctor Login? <span onClick={() => setState('Doctor')} className='text-primary underline cursor-pointer'>Click here</span></p>
