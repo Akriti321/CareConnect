@@ -356,8 +356,7 @@ const addPrescription = async (req, res) => {
                 message: "Appointment not found"
             })
         }
-
-        if (appointmentData.docId !== docId) {
+        if (appointmentData.docId.tostring() !== docId) {
             return res.json({
                 success: false,
                 message: "Unauthorized"

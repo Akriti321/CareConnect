@@ -6,9 +6,8 @@ import userModel from "../models/userModel.js";
 // Create Prescription
 const createPrescription = async (req, res) => {
     try {
-
+        const docId = req.docId;
         const {
-            docId,
             appointmentId,
             medicines,
             notes
