@@ -64,7 +64,7 @@ const RegisterDoctor = () => {
             )
 
             const { data } = await axios.post(
-                'http://localhost:4000/api/doctor/register',
+                'https://careconnect-2-jw4b.onrender.com/api/doctor/register',
                 dataToSend,
                 {
                     headers: {

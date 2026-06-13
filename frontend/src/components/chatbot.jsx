@@ -191,7 +191,7 @@ ${input}
 }
 
 const { data } = await axios.post(
-    'http://localhost:4000/api/chatbot/analyze',
+    'https://careconnect-2-jw4b.onrender.com/api/chatbot/analyze',
     {
         symptoms: symptomPayload
     }
