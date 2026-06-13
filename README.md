@@ -17,6 +17,19 @@ Traditional appointment systems are often inefficient, leading to scheduling con
 CareConnect digitizes the entire healthcare workflow—from appointment booking and online payments to real-time consultations and digital prescriptions. With admin-verified doctors, intelligent scheduling, AI assistance, and secure communication, the platform provides a seamless healthcare experience for both patients and doctors.
 
 ---
+## 🚀 Live Demo
+
+| Platform | Link |
+|----------|------|
+| User Portal | https://careconnect-roan.vercel.app |
+| Admin Panel | https://care-connect-sepia-six.vercel.app |
+
+## 🌐 Deployment
+
+* Frontend: Vercel
+* Admin Panel: Vercel
+* Backend: Render
+* Database: MongoDB Atlas
 
 # Key Features
 
