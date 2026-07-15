@@ -247,7 +247,33 @@ catch (error) {
     }
 
     return (
-<div className='fixed right-6 top-24 bottom-6 w-[500px] bg-white rounded-2xl shadow-2xl border border-primary z-50 flex flex-col overflow-hidden'>
+
+        
+
+
+<div
+  className="
+    fixed
+    top-4
+    right-2
+    bottom-4
+    w-[95vw]
+    sm:w-[80vw]
+    md:w-[60vw]
+    lg:w-[40vw]
+    xl:w-[500px]
+    bg-white
+    rounded-2xl
+    shadow-2xl
+    border
+    border-primary
+    z-50
+    flex
+    flex-col
+    overflow-hidden
+  "
+>
+
 
             {/* Header */}
 
@@ -377,3 +403,7 @@ catch (error) {
 }
 
 export default ChatBot
+
+
+
+{/* <div className='fixed right-6 top-24 bottom-6 w-[500px] bg-white rounded-2xl shadow-2xl border border-primary z-50 flex flex-col overflow-hidden'> */}
